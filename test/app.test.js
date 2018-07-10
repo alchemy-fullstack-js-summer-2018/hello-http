@@ -5,9 +5,14 @@ chai.use(chaiHttp);
 
 const app = require('../lib/app');
 
-describe('', () => {
+describe('hello http server', () => {
 
-    it('', () => {
-
+    it('responds with happy birthday jane on GET', () => {
+        return chai.request(app)
+            .get('/')
+            .then(res => {
+                assert.equal(res.status, 200);
+                assert.equal(res.text, 'Happy Birthday Jane!');
+            });
     });
 });

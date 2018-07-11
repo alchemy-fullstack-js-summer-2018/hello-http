@@ -1,7 +1,9 @@
 const chai = require('chai');
 const { assert } = chai;
 const chaiHttp = require('chai-http');
-const app = require('../server');
+const app = require('../lib/app');
+
+chai.use(chaiHttp);
 
 describe('Simple HTTP Server', () => {
 

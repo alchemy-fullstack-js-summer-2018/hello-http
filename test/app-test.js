@@ -20,7 +20,7 @@ describe('not-simple-to-me http server', () => {
         return chai.request(app)
             .get('/happy-birthday')
             .then(res => {
-                assert.equal(res.text, 'Happy Birthday!');
+                assert.equal(res.text, 'Happy Birthday Stranger!');
             });
 
     });

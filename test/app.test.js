@@ -8,19 +8,27 @@ const app = require('../lib/app');
 
 describe('simple http server', () => {
 
-    it('responds with happy birthday on GET', () => {
+    it('responds with hello Easton on GET', () => {
         return chai.request(app)
             .get('/')
             .then(res => {
-                assert.equal(res.text, 'happy birthday');
+                assert.equal(res.text, 'Hello Easton!');
             });
     });
 
     it('responds <p>Happy Birthday <strong>Luis!</strong></p>', () => {
         return chai.request(app)
-            .get('/happy-birthday/luis')
+            .get('/happy-birthday/Luis')
             .then(res => {
-                assert.equal(res, '<p>Happy Birthday <strong>Luis!</strong></p>');
+                assert.equal(res.text, '<p>Happy Birthday <strong>Luis!</strong></p>');
+            });
+    });
+
+    it('responds <p>Happy Birthday <strong>Stranger!</strong></p>', () => {
+        return chai.request(app)
+            .get('/happy-birthday')
+            .then(res => {
+                assert.equal(res.text, '<p>Happy Birthday <strong>Stranger!</strong></p>');
             });
     });
 });

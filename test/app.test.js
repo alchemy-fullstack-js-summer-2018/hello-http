@@ -13,4 +13,13 @@ describe('Simple http server', () => {
                 assert.equal(res.text, '<html><body><p>Happy Birthday <strong>Jane</strong> You Rock</p></body></html>');
             });
     });
+
+    it('3 http facts with get', () => {
+        return chai.request(app)
+            .get('/facts')
+            .set('Content-Type', 'application/json')
+            .then(res => {
+                assert.deepEqual(res.body);
+            });
+    });
 });

@@ -14,12 +14,11 @@ describe('Simple http server', () => {
             });
     });
 
-    it('3 http facts with get', () => {
+    it('Returns http fact object', () => {
         return chai.request(app)
             .get('/facts')
-            .set('Content-Type', 'application/json')
             .then(res => {
-                assert.deepEqual(res.body);
+                assert.equal(res.body.fact, 'http');
             });
     });
 });

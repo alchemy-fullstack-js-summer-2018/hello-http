@@ -9,9 +9,12 @@ describe('simple http server', () => {
 
     it('responds with hello world on GET', () => {
         return chai.request(app)
-            .get('/')
+            .get('/happy-birthday')
             .then(res => {
                 assert.equal(res.status, 200);
+                assert.equal(res.text, 
+                    '<html><body><p>Happy Birthday <strong>Stranger!</strong> You Rock</p></body></html>'
+                );
             });
     });
 

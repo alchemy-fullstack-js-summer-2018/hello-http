@@ -20,7 +20,7 @@ describe('not-simple-to-me http server', () => {
         return chai.request(app)
             .get('/happy-birthday')
             .then(res => {
-                assert.equal(res.text, 'Happy Birthday Stranger!');
+                assert.equal(res.text, '<html><body><p>Happy Birthday <strong>Stranger!</strong></p></body></html>');
             });
     });
 
@@ -28,7 +28,15 @@ describe('not-simple-to-me http server', () => {
         return chai.request(app)
             .get('/happy-birthday/jane')
             .then(res => {
-                assert.equal(res.text, 'Happy Birthday Jane');
+                assert.equal(res.text, '<html><body><p>Happy Birthday <strong>jane!</strong></p></body></html>');
+            });
+    });
+
+    it('says happy birthday specific name with custom message', () => {
+        return chai.request(app)
+            .get('/happy-birthday/Jane?custom=You%20Rock')
+            .then(res => {
+                assert.equal(res.text, '<html><body><p>Happy Birthday <strong>Jane!</strong> You Rock</p></body></html>');
             });
     });
 });

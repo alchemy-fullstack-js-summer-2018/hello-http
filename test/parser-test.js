@@ -16,7 +16,7 @@ describe('body parser', () => {
                 assert.deepEqual(body, obj);
             });
 
-        req.emit('data', JSONstringify(obj));
+        req.emit('data', JSON.stringify(obj));
         req.emit('end');
 
         return promise;
@@ -25,7 +25,7 @@ describe('body parser', () => {
     it('fails if content-type is not application/json', () => {
         const req = {
             headers: {
-                'constent-type': 'text/html'
+                'content-type': 'text/html'
             }
         };
 
@@ -33,7 +33,7 @@ describe('body parser', () => {
             .then(
                 () => { throw new Error('Expected failure got success');},
                 err => {
-                    assert.equal(err, 'not json!');
+                    assert.equal(err, 'obviously not json');
                 }
             );
     });    

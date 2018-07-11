@@ -18,7 +18,11 @@ describe('Simple http server', () => {
         return chai.request(app)
             .get('/facts')
             .then(res => {
-                assert.equal(res.body.fact, 'http');
+                assert.deepEqual(res.body, {
+                    fact1: 'web development tools',
+                    fact2: 'learn for coding',
+                    fact3: 'http super fast'
+                });
             });
     });
 });

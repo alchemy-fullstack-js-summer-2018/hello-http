@@ -53,7 +53,7 @@ describe('simple http server', () => {
             .get('/better-luck-next-time')
             .then(res => {
                 assert.equal(res.status, 404);
-                assert.match(res.text, /Sorry/);
+                assert.match(res.text, /CANNOT/);
             });
     });
 });

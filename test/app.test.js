@@ -60,7 +60,7 @@ describe('simple http server', () => {
             .get('/what-are-you-doing')
             .then(res => {
                 assert.equal(res.status, 404);
-                assert.equal(res.text, 'Sorry that page does not exist');
+                assert.equal(res.error, `Error: cannot ${res.error.method} ${res.error.path} (${res.error.status})`);
             });
     });
 

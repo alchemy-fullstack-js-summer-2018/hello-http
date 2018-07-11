@@ -35,7 +35,7 @@ describe('hello http server', () => {
         return chai.request(app)
             .get('/fact')
             .then(res => {
-                assert.isOk(/http/.test(res));
+                assert.ok(/http/.test(res.text));
             });
     });
 });

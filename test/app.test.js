@@ -35,7 +35,7 @@ describe('Simple HTTP Server', () => {
         return chai.request(app)
             .get('/fact')
             .then(res => {
-                assert.equal(res.text)
+                assert.equal(res.text.includes('HTTP'));
             });
     });
 

@@ -7,15 +7,15 @@ const app = require('../lib/app');
 
 describe('hello http server', () => {
 
-    it('responds with happy birthday jane on GET', () => {
+    it.only('responds with happy birthday jane on GET', () => {
         return chai.request(app)
-            .get('/happy-birthday')
+            .get('/happy-birthday/name')
             .then(res => {
                 assert.equal(res.text, '<html><body><p>Happy Birthday <strong>Jane!</strong></p></body></html>');
             });
     });
 
-    it.only('responds with happy birthday jane on GET', () => {
+    it('responds to a specific name', () => {
         return chai.request(app)
             .get('/happy-birthday/name')
             .then(res => {

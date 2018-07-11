@@ -23,4 +23,12 @@ describe('simple HTTP server', () => {
             .then(res => {
                 assert.equal(res.text, '<html><body><p>Happy Birthday <strong>Mark!</strong></p></body></html>');
             });
+
+    it('responds using Stranger as the name if no name is given', () => {
+        return chai.request(app)
+            .get('/happy-birthday')
+            .then(res => {
+                assert.equal(res.text, '<p>Happy birthday, <strong>Stranger!</strong> </p>');
+            });
+    });
 });

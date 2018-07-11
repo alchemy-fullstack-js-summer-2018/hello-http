@@ -10,6 +10,15 @@ describe('simple http server', () => {
     const bobbyBirthdayRes = '<p>Happy Birthday <strong>Bobby!</strong></p>';
     const bobbyTheBest = '<p>Happy Birthday <strong>Bobby!</strong>You are the best</p>';
 
+    it('responds with Hello when given the / path', () => {
+        return chai.request(app)
+            .get('/')
+            .then(res => {
+                assert.equal(res.status, 200);
+                assert.equal(res.text, 'Hello');
+            });
+    });
+
     it('responds with happy birthday stranger when not given a value', () => {
         return chai.request(app)
             .get('/happy-birthday')

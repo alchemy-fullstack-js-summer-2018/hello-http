@@ -23,11 +23,19 @@ describe('hello http server', () => {
             });
     });
 
-    it.only('responds to a custom value', () => {
+    it('responds to a custom value on GET', () => {
         return chai.request(app)
             .get('/happy-birthday/name?custom=You%20Rock')
             .then(res => {
                 assert.equal(res.text, '<html><body><p>Happy Birthday <strong>Jane!</strong> You Rock</p></body></html>');
+            });
+    });
+
+    it.only('responds with one random fact (of three) about http on GET', () => {
+        return chai.request(app)
+            .get('/fact')
+            .then(res => {
+                assert.isOk(/http/.test(res));
             });
     });
 });

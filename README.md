@@ -5,7 +5,9 @@ This is an end-to-end (E2E) tested HTTP server written using Node.js and Chai/Ch
 ## Get Started
 1. Fork and clone the repo.
 1. Run `npm i` inside the directory to install all the necessary packages.
-1. Run `npm run test:watch` to run the tests!
+1. Run `npm run test:watch` to run the tests.
+1. Run `node server.js` to start the server.
+1. Navigate to `localhost:3000` to get started!
 
 ## API
 * If method is `GET` and the URL (path) is `/happy-birthday/<name>`, response will be (in text/html):

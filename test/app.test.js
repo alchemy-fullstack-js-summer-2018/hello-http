@@ -10,9 +10,9 @@ describe('Simple http server', () => {
             .get('/happy-birthday')
             .query('name=Jane')
             .query('custom=You%20Rock')
-            .set('Content-Type', 'text/html')
             .then(res => {
                 assert.equal(res.text, '<html><body><p>Happy Birthday <strong>Jane</strong> You Rock</p></body></html>');
+                assert.equal(res.header['content-type'], 'text/html');
             });
     });
 
@@ -21,6 +21,7 @@ describe('Simple http server', () => {
             .get('/facts')
             .then(res => {
                 assert.ok(/http/.test, JSON.parse(res.text));
+                assert.equal(res.header['content-type'], 'application/json');
             });
     });
 });

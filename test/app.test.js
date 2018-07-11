@@ -20,7 +20,6 @@ describe('Simple http server', () => {
         return chai.request(app)
             .get('/facts')
             .then(res => {
-                console.log(JSON.parse(res.text));
                 assert.ok(/http/.test, JSON.parse(res.text));
             });
     });

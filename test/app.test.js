@@ -9,9 +9,8 @@ describe('hello http server', () => {
 
     it('responds with happy birthday jane on GET', () => {
         return chai.request(app)
-            .get('/')
+            .get('/birthday')
             .then(res => {
-                assert.equal(res.status, 200);
                 assert.equal(res.text, 'Happy Birthday Jane!');
             });
     });

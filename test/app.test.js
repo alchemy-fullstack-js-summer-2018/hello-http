@@ -11,7 +11,7 @@ describe('Simple HTTP Server', () => {
         return chai.request(app)
             .get('/happy-birthday/Frank')
             .then(res => {
-                assert.equal(res.text, '<html><body><p>Happy Birthday <strong>Frank!</strong></p></body></html>');
+                assert.equal(res.text, '<html><body><p>Happy Birthday <strong>Frank!</strong> </p></body></html>');
             });
     });
 
@@ -19,7 +19,7 @@ describe('Simple HTTP Server', () => {
         return chai.request(app)
             .get('/happy-birthday')
             .then(res => {
-                assert.equal(res.text, '<html><body><p>Happy Birthday <strong>Stranger!</strong></p></body></html>');
+                assert.equal(res.text, '<html><body><p>Happy Birthday <strong>Stranger!</strong> </p></body></html>');
             });
     });
 

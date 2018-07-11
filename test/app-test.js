@@ -46,4 +46,15 @@ describe('simple http server', () => {
             });
     });
 
+    it('responds with 3 interesting fact about http', () => {
+        return chai.request(app)
+            .get('/fact')
+            .then(res => {
+                console.log(res.text);
+                assert.ok(/http/.test(res.text));
+            });
+
+
+    });
+
 });    

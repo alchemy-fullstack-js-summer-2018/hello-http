@@ -38,4 +38,12 @@ describe('simple http server', () => {
                 assert.equal(res.text, '<html><body><p>Happy Birthday <strong>Jane!</strong> You Rock</p></body></html>');
             });
     });
+
+    it('returns a random fact object about http when path is fact', () => {
+        return chai.request(app)
+            .get('/fact/')
+            .then(res => {
+                assert.include(res.body.fact, 'http');
+            });
+    });
 });

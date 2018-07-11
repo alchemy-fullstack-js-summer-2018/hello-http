@@ -17,4 +17,6 @@ This is an end-to-end (E2E) tested HTTP server written using Node.js and Chai/Ch
 <html><body><p>Happy Birthday <strong>name</strong> message</p></body></html>
 ```
 * If method is `GET` and the URL (path) is `/fact`, response will be (in JSON):
-`{ fact: random cool fact about HTTP }`
+```js
+{ fact: random cool fact about HTTP }
+```

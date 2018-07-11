@@ -15,4 +15,13 @@ describe('not-simple-to-me http server', () => {
                 assert.equal(res.text, 'waz up world');
             });
     });
+
+    it('says happy birthday', () => {
+        return chai.request(app)
+            .get('/happy-birthday')
+            .then(res => {
+                assert.equal(res.text, 'Happy Birthday!');
+            });
+
+    });
 });

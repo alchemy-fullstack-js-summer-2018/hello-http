@@ -25,4 +25,25 @@ describe('simple http server', () => {
 
             });
     });
+
+    it('responds with custom message', () => {
+        return chai.request(app)
+            .get('/happy-birthday/Jane?custom=You%20Rock')
+            .then(res => {
+                assert.equal(res.status, 200);
+                assert.equal(res.text, '<html><body><p>Happy Birthday <strong>Jane!</strong>You Rock</p></body></html>');
+            
+            });
+    });
+
+    it('responds with no-name birthday greeting', () => {
+        return chai.request(app)
+            .get('/happy-birthday/')
+            .then(res => {
+                assert.equal(res.status, 200);
+                assert.equal(res.text, '<html><body><p>Happy Birthday <strong>Stranger!</strong></p></body></html>');
+
+            });
+    });
+
 });    

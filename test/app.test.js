@@ -16,4 +16,11 @@ describe('simple HTTP server', () => {
                 assert.equal(res.text, 'Hello World');
             });
     });
+    
+    it('says Happy Birthday', () => {
+        return chai.request(app)
+            .get('/happy-birthday/Mark')
+            .then(res => {
+                assert.equal(res.text, '<html><body><p>Happy Birthday <strong>Mark!</strong></p></body></html>');
+            });
 });

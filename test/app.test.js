@@ -7,10 +7,10 @@ const app = require('../lib/app');
 describe('Simple http server', () => {
     it('Respond with b-day on GET', () => {
         return chai.request(app)
-            .get('/happy-birthday?name=Jane')
+            .get('/happy-birthday?name=Jane&custom=you%20rock')
             .set('Content-Type', 'text/html')
             .then(res => {
-                assert.equal(res.text, 'happy birthday Jane');
+                assert.equal(res.text, 'happy birthday Jane you rock');
             });
     });
 });

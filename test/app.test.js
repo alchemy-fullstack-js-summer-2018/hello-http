@@ -56,4 +56,13 @@ describe('simple http server', () => {
             });
     });
 
+    it('responds with a 404 when you give it a bad path', () => {
+        return chai.request(app)
+            .get('/what-are-you-doing')
+            .then(res => {
+                assert.equal(res.status, 404);
+                assert.equal(res.text, 'Sorry that page does not exist');
+            });
+    });
+
 });

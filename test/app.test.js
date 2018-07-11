@@ -10,7 +10,7 @@ describe('Simple http server', () => {
             .get('/happy-birthday?name=Jane&custom=You%20Rock')
             .set('Content-Type', 'text/html')
             .then(res => {
-                assert.equal(res.text, 'happy birthday Jane You Rock');
+                assert.equal(res.text, '<html><body><p>Happy Birthday <strong>Jane</strong> You Rock</p></body></html>');
             });
     });
 });

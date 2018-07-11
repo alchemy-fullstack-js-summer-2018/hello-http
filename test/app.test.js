@@ -12,5 +12,4 @@ describe('Simple http server', () => {
                 assert.equal(res.text, 'happy birthday');
             });
     });
-
 });

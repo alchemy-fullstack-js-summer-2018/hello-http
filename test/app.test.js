@@ -1,0 +1,33 @@
+const chai = require('chai');
+const { assert } = chai;
+const chaiHttp = require('chai-http');
+chai.use(chaiHttp);
+
+const app = require('../lib/app');
+
+describe('simple http server', () => {
+    it('responds with hello world on GET', () => {
+        return chai.request(app)
+            .get('/')
+            .then(res => {
+                assert.equal(res.status, 200);
+                assert.equal(res.text, 'hello world');
+            });
+    });
+
+    it('says happy birthday with no given name', () => {
+        return chai.request(app)
+            .get('/happy-birthday/')
+            .then(res => {
+                assert.equal(res.text, 'happy birthday stranger');
+            });
+    });
+
+    it('says happy birthday to a specific person', () => {
+        return chai.request(app)
+            .get('/happy-birthday/john')
+            .then(res => {
+                assert.equal(res.text, 'happy birthday john');
+            });
+    });
+});

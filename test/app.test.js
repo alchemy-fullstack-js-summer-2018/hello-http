@@ -7,7 +7,7 @@ const app = require('../lib/app');
 
 describe('hello http server', () => {
 
-    it.only('responds with happy birthday jane on GET', () => {
+    it('responds with happy birthday jane on GET', () => {
         return chai.request(app)
             .get('/happy-birthday/name')
             .then(res => {
@@ -20,6 +20,14 @@ describe('hello http server', () => {
             .get('/happy-birthday/name')
             .then(res => {
                 assert.equal(res.text, '<html><body><p>Happy Birthday <strong>Jane!</strong></p></body></html>');
+            });
+    });
+
+    it.only('responds to a custom value', () => {
+        return chai.request(app)
+            .get('/happy-birthday/name?custom=You%20Rock')
+            .then(res => {
+                assert.equal(res.text, '<html><body><p>Happy Birthday <strong>Jane!</strong> You Rock</p></body></html>');
             });
     });
 });

@@ -6,8 +6,9 @@ chai.use(chaiHttp);
 const app = require('../lib/app');
 
 describe('simple http server', () => {
-    const birthdayRes = '<html><body><p>Happy Birthday <strong>Stranger!</strong></p></body></html>';
-    const bobbyBirthdayRes = '<html><body><p>Happy Birthday <strong>Bobby!</strong></p></body></html>';
+    const birthdayRes = '<p>Happy Birthday <strong>Stranger!</strong></p>';
+    const bobbyBirthdayRes = '<p>Happy Birthday <strong>Bobby!</strong></p>';
+    const bobbyTheBest = '<p>Happy Birthday <strong>Bobby!</strong>You are the best</p>';
 
     it('responds with happy birthday stranger when not given a value', () => {
         return chai.request(app)
@@ -24,6 +25,15 @@ describe('simple http server', () => {
             .then(res => {
                 assert.equal(res.status, 200);
                 assert.equal(res.text, bobbyBirthdayRes);
+            });
+    });
+
+    it('responds with a custom greeting that the user defines for some reason', () => {
+        return chai.request(app)
+            .get('/happy-birthday/Bobby?custom=You%20are%20the%20best')
+            .then(res => {
+                assert.equal(res.status, 200);
+                assert.equal(res.text, bobbyTheBest);
             });
     });
 

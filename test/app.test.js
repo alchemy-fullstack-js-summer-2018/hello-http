@@ -33,7 +33,7 @@ describe('simple http server', () => {
 
     it('says happy birthday with a custom message', () => {
         return chai.request(app)
-            .get('/happy-birthday/Jane?custom=You%20Rock')
+            .get('/happy-birthday/Jane?custom=%20You%20Rock')
             .then(res => {
                 assert.equal(res.text, '<html><body><p>Happy Birthday <strong>Jane!</strong> You Rock</p></body></html>');
             });

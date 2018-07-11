@@ -33,6 +33,14 @@ describe('simple HTTP server', () => {
             });
     });
 
+    it('responds with custom message if query string is included', () => {
+        return chai.request(app)
+            .get('/happy-birthday/Mark?custom=You%20are%20old,%20man.')
+            .then(res => {
+                assert.equal(res.text, '<p>Happy birthday, <strong>Mark!</strong> You are old, man.</p>');
+            });
+    });
+
     it('returns a random fact that has "http" in it', () => {
         return chai.request(app)
             .get('/fact')

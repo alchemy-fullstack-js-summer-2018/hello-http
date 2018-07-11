@@ -13,7 +13,7 @@ Your server should:
       <html><body><p>Happy Birthday <strong>Jane!</strong></p></body></html>
       ```
   * Content Type should be set to `text/html`
-  * If query string specifies a `custom` value, like `/happy-birthday/Jane&custom=You%20Rock`, add that
+  * If query string specifies a `custom` value, like `/happy-birthday/Jane?custom=You%20Rock`, add that
   to the response: 
       ```html
       <html><body><p>Happy Birthday <strong>Jane!</strong> You Rock</p></body></html>

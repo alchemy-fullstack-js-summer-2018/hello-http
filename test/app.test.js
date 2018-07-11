@@ -7,7 +7,8 @@ const app = require('../lib/app');
 describe('Simple http server', () => {
     it('Respond with b-day on GET', () => {
         return chai.request(app)
-            .get('/')
+            .get('/happy-birthday/<name>')
+            .set('Content-Type', 'text/html')
             .then(res => {
                 assert.equal(res.text, 'happy birthday');
             });

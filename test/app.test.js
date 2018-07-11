@@ -31,8 +31,9 @@ describe('simple http server', () => {
         return chai.request(app)
             .get('/facts')
             .then(res => {
+                console.log('***CONSOLE***', res.body.fact);
                 assert.equal(res.status, 200);
-                console.log(res.text);
+                assert.equal('HTTP', res.body.fact.slice(0, 4));
             });
     });
 

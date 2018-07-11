@@ -7,13 +7,23 @@ const app = require('../lib/app');
 
 describe('simple http server', () => {
     const birthdayRes = '<html><body><p>Happy Birthday <strong>Stranger!</strong></p></body></html>';
+    const bobbyBirthdayRes = '<html><body><p>Happy Birthday <strong>Bobby!</strong></p></body></html>';
 
-    it('responds with hello world on GET', () => {
+    it('responds with happy birthday stranger when not given a value', () => {
         return chai.request(app)
             .get('/happy-birthday')
             .then(res => {
                 assert.equal(res.status, 200);
                 assert.equal(res.text, birthdayRes);
+            });
+    });
+
+    it('responds with happy birthday Bobby when given the name Bobby', () => {
+        return chai.request(app)
+            .get('/happy-birthday/Bobby')
+            .then(res => {
+                assert.equal(res.status, 200);
+                assert.equal(res.text, bobbyBirthdayRes);
             });
     });
 

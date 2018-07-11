@@ -7,7 +7,7 @@ const app = require('../lib/app');
 
 describe('not-simple-to-me http server', () => {
 
-    it('responds with waz up world on GET', () => {
+    it('responds with waz up world', () => {
         return chai.request(app)
             .get('/')
             .then(res => {
@@ -16,12 +16,19 @@ describe('not-simple-to-me http server', () => {
             });
     });
 
-    it('says happy birthday', () => {
+    it('says happy birthday stranger on get', () => {
         return chai.request(app)
             .get('/happy-birthday')
             .then(res => {
                 assert.equal(res.text, 'Happy Birthday Stranger!');
             });
+    });
 
+    it('says happy birthday specific name', () => {
+        return chai.request(app)
+            .get('/happy-birthday/jane')
+            .then(res => {
+                assert.equal(res.text, 'Happy Birthday Jane');
+            });
     });
 });

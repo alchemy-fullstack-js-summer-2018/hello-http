@@ -31,4 +31,12 @@ describe('Simple HTTP Server', () => {
             });
     });
 
+    it('Generates a random fact when the path is /fact', () => {
+        return chai.request(app)
+            .get('/fact')
+            .then(res => {
+                assert.equal(res.text)
+            });
+    });
+
 });

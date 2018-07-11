@@ -16,4 +16,12 @@ describe('Simple HTTP Server', () => {
             });
     });
 
+    it('Responds with Happy Birthday <name> at path: /happy-birthday/<name>', () => {
+        return chai.request(app)
+            .get('/happy-birthday/Frank')
+            .then(res => {
+                assert.equal(res.text, '<html><body><p>Happy Birthday <strong>Frank!</strong></p></body></html>');
+            });
+    });
+
 });

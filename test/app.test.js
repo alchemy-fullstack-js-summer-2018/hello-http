@@ -47,4 +47,13 @@ describe('simple http server', () => {
                 assert.ok(/http/.test(res.body.fact));
             });
     });
+
+    it('responds with 404 on not found', () => {
+        return chai.request(app)
+            .get('/better-luck-next-time')
+            .then(res => {
+                assert.equal(res.status, 404);
+                assert.match(res.text, /Sorry/);
+            });
+    });
 });

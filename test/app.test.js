@@ -24,12 +24,14 @@ describe('simple http server', () => {
             });
     });
     
-    it('send a http fact', () => {
+    it('send an Http fact', () => {
         return chai.request(app)
             .get('/facts')
             .then(res => {
+                console.log('**** response ******', res.text);
                 assert.equal(res.status, 200);
-                
+
+                assert.ok(/Http/.test(res.text));               
             });
     });
 

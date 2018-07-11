@@ -13,6 +13,7 @@ describe('Simple HTTP Server', () => {
             .then(res => {
                 assert.equal(res.text, '<html><body><p>Happy Birthday <strong>Frank!</strong> </p></body></html>');
                 assert.equal(res.status, 200);
+                assert.equal(res.header['content-type'], 'text/html');
             });
     });
 
@@ -22,6 +23,7 @@ describe('Simple HTTP Server', () => {
             .then(res => {
                 assert.equal(res.text, '<html><body><p>Happy Birthday <strong>Stranger!</strong> </p></body></html>');
                 assert.equal(res.status, 200);
+                assert.equal(res.header['content-type'], 'text/html');
             });
     });
 
@@ -31,6 +33,7 @@ describe('Simple HTTP Server', () => {
             .then(res => {
                 assert.equal(res.text, '<html><body><p>Happy Birthday <strong>Frank!</strong> You rock!</p></body></html>');
                 assert.equal(res.status, 200);
+                assert.equal(res.header['content-type'], 'text/html');
             });
     });
 
@@ -42,6 +45,7 @@ describe('Simple HTTP Server', () => {
                 assert.ok(response.fact);
                 assert.ok(/HTTP/.test(response.fact));
                 assert.equal(res.status, 200);
+                assert.equal(res.header['content-type'], 'application/json');
             });
     });
 

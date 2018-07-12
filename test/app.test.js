@@ -21,7 +21,15 @@ describe('my first http server', () => {
         return chai.request(app)
             .get('/happy-birthday')
             .then(res => {
-                assert.equal(res.text, '<html><body><p>Happy Birthday Stranger 🎂 </p></body></html>');
+                assert.equal(res.text, '<html><body><p>Happy Birthday Stranger </p></body></html>');
+            });
+    });
+
+    it('says a personalized happy birthday greeting and message', () => {
+        return chai.request(app)
+            .get('/happy-birthday/Bob!?custom=Party%20Time!')
+            .then(res => {
+                assert.equal(res.text, '<html><body><p>Happy Birthday Bob! Party Time!</p></body></html>');
             });
     });
 });

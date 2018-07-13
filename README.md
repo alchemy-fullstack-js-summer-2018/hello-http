@@ -1,4 +1,4 @@
-# Hello HTTP
+# Hello HTTP Server
 
 ## Project Description
 An E2E tested HTTP server created with Node.js. 
@@ -29,4 +29,4 @@ Mariah Adams
 This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
 
 ## Acknowledgment 
-Forked from alchemy-fullstack-js-summer-2018/hello-http
+Forked from [alchemy-fullstack-js-summer-2018/hello-http] (https://github.com/alchemy-fullstack-js-summer-2018/hello-http)

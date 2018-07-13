@@ -18,8 +18,8 @@ Requires Node v10 or later.
 
 This API uses simple GET requests for the following paths:
 * /happy-birthday/ 
-* /happy-birthday/<name> 
-* /happy-birthday/<name>?custom=<message>! 
+* /happy-birthday/[name] 
+* /happy-birthday/[name]?custom=[message]! 
 * /fact
 
 ## Contributor

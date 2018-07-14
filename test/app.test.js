@@ -42,8 +42,5 @@ describe('simple http server', () => {
                 assert.equal(res.status, 200);
                 assert.equal(res.text, '<p>Happy Birthday<strong>Antreo</strong>whoohoo</p>');
             });        
-    });
-    
-    
-    
+    });    
 });

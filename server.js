@@ -6,5 +6,5 @@ const server = http.createServer(app);
 const PORT = 5000;
 
 server.listen(PORT, () => {
-    console.log('Server running on', server.address().port);
+    console.log('Server running on', PORT);
 });

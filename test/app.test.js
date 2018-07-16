@@ -34,6 +34,13 @@ describe('simple http server', () => {
                 assert.ok(/Http/.test(res.text));               
             });
     });
-
-
+    
+    it('responds with custom message addition', () => {
+        return chai.request(app)
+            .get('/happy-birthday/Antreo?custom=whoohoo')
+            .then(res => {
+                assert.equal(res.status, 200);
+                assert.equal(res.text, '<p>Happy Birthday<strong>Antreo</strong>whoohoo</p>');
+            });        
+    });    
 });

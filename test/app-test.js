@@ -31,7 +31,6 @@ describe('not-simple-to-me http server', () => {
             });
     });
 
-
     it('says happy birthday specific name with custom message', () => {
         return chai.request(app)
             .get('/happy-birthday/Jane?custom=You%20Rock')
@@ -53,7 +52,6 @@ describe('not-simple-to-me http server', () => {
             .then(res => {
                 assert.equal(res.status, 404);
                 assert.match(res.text, /CANNOT/);
-       
             });
     });
 });     

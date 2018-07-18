@@ -40,12 +40,19 @@ describe('not-simple-to-me http server', () => {
             });
     });
 
-    // FACT TEST IS GOOD, COMMENTING OUT UNTIL FACTS AND FUNCTION IN PLACE
-    // it('returns rando http fact', () => {
-    //     return chai.request(app)
-    //         .get('/fact/')
-    //         .then(res => {
-    //             assert.include(res.body.fact, 'http');
-    //         });
-    // });   
-});
+    it('returns rando http fact', () => {
+        return chai.request(app)
+            .get('/fact/')
+            .then(res => {
+                assert.include(res.body.fact, 'http');
+            });
+    });   
+    it('responds with 404 on not found', () => {
+        return chai.request(app)
+            .get('/better-luck-next-time')
+            .then(res => {
+                assert.equal(res.status, 404);
+                assert.match(res.text, /CANNOT/);
+            });
+    });
+});     

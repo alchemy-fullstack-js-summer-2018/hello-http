@@ -16,27 +16,27 @@ describe('not-simple-to-me http server', () => {
             });
     });
 
+    it('says happy birthday specific name', () => {
+        return chai.request(app)
+            .get('/happy-birthday/Jane/')
+            .then(res => {
+                assert.equal(res.text, '<p>Happy Birthday <strong>Jane!</strong> </p>');
+            });
+    });
     it('says happy birthday stranger on get', () => {
         return chai.request(app)
-            .get('/happy-birthday')
+            .get('/happy-birthday/')
             .then(res => {
-                assert.equal(res.text, '<html><body><p>Happy Birthday <strong>Stranger!</strong></p></body></html>');
+                assert.equal(res.text, '<p>Happy Birthday <strong>Stranger!</strong> </p>');
             });
     });
 
-    it('says happy birthday specific name', () => {
-        return chai.request(app)
-            .get('/happy-birthday/jane')
-            .then(res => {
-                assert.equal(res.text, '<html><body><p>Happy Birthday <strong>jane!</strong></p></body></html>');
-            });
-    });
 
     it('says happy birthday specific name with custom message', () => {
         return chai.request(app)
             .get('/happy-birthday/Jane?custom=You%20Rock')
             .then(res => {
-                assert.equal(res.text, '<html><body><p>Happy Birthday <strong>Jane!</strong> You Rock</p></body></html>');
+                assert.equal(res.text, '<p>Happy Birthday <strong>Jane!</strong> You Rock</p>');
             });
     });
 
@@ -44,15 +44,16 @@ describe('not-simple-to-me http server', () => {
         return chai.request(app)
             .get('/fact/')
             .then(res => {
-                assert.include(res.body.fact, 'http');
+                assert.ok(/http/.test(res.body.fact));
             });
     });   
     it('responds with 404 on not found', () => {
         return chai.request(app)
-            .get('/better-luck-next-time')
+            .get('/bad/')
             .then(res => {
                 assert.equal(res.status, 404);
                 assert.match(res.text, /CANNOT/);
+       
             });
     });
 });     
